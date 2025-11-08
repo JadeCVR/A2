@@ -10,10 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ra-data-json-server": "^5.12.3",
+    "ra-data-json-server": "^5.11.4",
     "react": "^19.1.1",
-    "react-admin": "^5.12.3",
-    "react-dom": "^19.1.1"
+    "react-admin": "^5.11.4",
+    "react-dom": "^19.1.1",
+    "trailbase": "^0.7.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

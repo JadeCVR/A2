@@ -1,35 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { 
+  Admin, Resource, ListGuesser, EditGuesser, ShowGuesser, CustomRoutes 
+} from 'react-admin';
+import { createTrailbaseProvider } from '/workspaces/A2/my-admin/src/ra-trailbase';
 
-function App() {
-  const [count, setCount] = useState(0)
+const TRAILBASE_URL = "https://upgraded-parakeet-x59qj7pj95wx365vx-4000.app.github.dev/";
+const { dataProvider, authProvider } = await createTrailbaseProvider(TRAILBASE_URL);
 
+export default function App () {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    <Admin dataProvider={dataProvider} authProvider={authProvider}>
+      <Resource name="comments" list={ListGuesser} />
+      <Resource name="posts" list={ListGuesser} />
+      <Resource name="users" list={ListGuesser} />
+    </Admin>
+)
+};
